@@ -1,8 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
-import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import BodyDiv from './WizardBody';
+import InputGroup from './InputGroup';
+import DisplayHeader from './WizardHeader';
 import {
 	updatePropName,
 	updateAddress,
@@ -10,66 +12,6 @@ import {
 	updateState,
 	updateZip
 } from '../../Redux/Reducer';
-
-const BodyDiv = styled.div`
-	width: 100vw;
-	height: 100vh;
-	display: flex;
-	align-content: center;
-	justify-content: center;
-
-	> .houses-display {
-		width: 54%;
-		display: flex;
-		flex-direction: column;
-		background: #e5f4ec;
-		align-content: center;
-		> .container {
-			padding-left: 2.5%;
-			width: 95%;
-		}
-	}
-`;
-
-const DisplayHeader = styled.div`
-	width: 100%;
-	height: 100px;
-	display: flex;
-	justify-content: space-between;
-	> h1 {
-		color: #425950;
-	}
-	> a {
-		color: black;
-		height: 30px;
-		margin-top: 28px;
-		font-weight: bold;
-		font-size: 18px;
-		text-decoration: none;
-		padding: 5px;
-	}
-	> .cancel {
-		background: #fec2c2;
-	}
-	> .previous {
-		background: #3b5249;
-		color: white;
-	}
-	> .next {
-		background: #8aea92;
-	}
-	border-bottom: black 1px solid;
-`;
-
-const InputGroup = styled.div`
-	width: 100%;
-	> input {
-		margin-left: 50px;
-	}
-	> h4 {
-		margin-left: 60px;
-	}
-`;
 
 const WizOne = props => (
 	<BodyDiv>
@@ -83,60 +25,66 @@ const WizOne = props => (
 				</DisplayHeader>
 
 				<InputGroup>
-					<h4>PropertyName</h4>
-					<input
-						type="text"
-						name="propName"
-						id="PropName"
-						value={props.propName}
-						style={{ width: '25%' }}
-						onChange={e => props.updatePropName(e.target.value)}
-					/>
-					<h4>Address</h4>
-					<input
-						type="text"
-						name="address"
-						id="address"
-						value={props.address}
-						style={{ width: '50%' }}
-						onChange={e => props.updateAddress(e.target.value)}
-					/>
-					<div style={{ display: 'flex' }}>
-						<InputGroup>
-							<h4>City</h4>
-							<input
-								type="text"
-								name="city"
-								id="city"
-								value={props.city}
-								style={{ width: '50%' }}
-								onChange={e => props.updateCity(e.target.value)}
-							/>
-						</InputGroup>
-						<InputGroup>
-							<h4>State</h4>
-							<input
-								type="text"
-								name="state"
-								id="state"
-								value={props.state}
-								style={{ width: '35%' }}
-								onChange={e =>
-									props.updateState(e.target.value)
-								}
-							/>
-						</InputGroup>
-						<InputGroup>
-							<h4>Zip</h4>
-							<input
-								type="number"
-								name="zip"
-								id="zip"
-								value={props.zip}
-								style={{ width: '45%' }}
-								onChange={e => props.updateZip(e.target.value)}
-							/>
-						</InputGroup>
+					<div>
+						<h4>Property Name</h4>
+						<input
+							type="text"
+							name="propName"
+							id="PropName"
+							value={props.propName}
+							style={{ width: '25%' }}
+							onChange={e => props.updatePropName(e.target.value)}
+						/>
+						<h4>Address</h4>
+						<input
+							type="text"
+							name="address"
+							id="address"
+							value={props.address}
+							style={{ width: '50%' }}
+							onChange={e => props.updateAddress(e.target.value)}
+						/>
+						<div style={{ display: 'flex' }}>
+							<InputGroup>
+								<h4>City</h4>
+								<input
+									type="text"
+									name="city"
+									id="city"
+									value={props.city}
+									style={{ width: '50%' }}
+									onChange={e =>
+										props.updateCity(e.target.value)
+									}
+								/>
+							</InputGroup>
+							<InputGroup>
+								<h4>State</h4>
+								<input
+									type="text"
+									name="state"
+									id="state"
+									value={props.state}
+									style={{ width: '35%' }}
+									onChange={e =>
+										props.updateState(e.target.value)
+									}
+								/>
+							</InputGroup>
+							<InputGroup>
+								<h4>Zip</h4>
+								<input
+									type="number"
+									name="zip"
+									id="zip"
+									value={props.zip}
+									style={{ width: '45%' }}
+									onChange={e =>
+										props.updateZip(e.target.value)
+									}
+								/>
+							</InputGroup>
+						</div>
 					</div>
 					<DisplayHeader>
 						<Link className="previous" to="/wizTwo">
